@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Staff 관리</title>
+</head>
+<body style="background-color: whitesmoke;">
+    <header class="title">
+        <h1>Staff 관리</h1>
+        <p>직원 정보를 입력하세요</p>
+    </header>
+    <main class="container">
+        <form class="card inputBox" action="/add" method="post">
+            <div>
+                <label><p>이름*</p><input type="text" name="name" required /> </label>
+                <label>
+                    <p>부서</p>
+                    <div class="optionBox">
+                        <span></span>
+                        <select name="department">
+                            <option value="">(선택)</option>
+                            <option value="개발팀">개발팀</option>
+                            <option value="영업팀">영업팀</option>
+                            <option value="디자인팀">디자인팀</option>
+                            <option value="총무팀">총무팀</option>
+                            <option value="인사팀">인사팀</option>
+                        </select>
+                    </div>
+                    
+                </label>
+                <label>
+                    <p>직책</p>
+                    <div class="optionBox">
+                        <span></span>
+                        <select name="position">
+                            <option value="">(선택)</option>
+                            <option value="부장">부장</option>
+                            <option value="과장">과장</option>
+                            <option value="대리">대리</option>
+                            <option value="주임">주임</option>
+                            <option value="사원">사원</option>
+                        </select> 
+                    </div>
+                    
+                </label>
+                <label>
+                    <p>급여(원)</p>
+                    <input type="number" name="salary" min="0" />
+                </label>
+                <label class="dateInput"><p>입사일</p><input type="date" placeholder="연도-월-일" name="start_date"></label>
+            </div>
+            <button class="addBtn" type="submit">추가</button>
+        </form>
+
+     <section class="card tableBox">
+        <iframe src="/list" class="tableFrame">
+        </iframe>
+     </section>        
+    </main>
+</body>
+</html>

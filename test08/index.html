@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css" />
+    <title>학생 관리</title>
+</head>
+<body>
+    <header class="title">
+        <h1>학생 관리</h1>
+        <p>학생의 정보를 입력하세요</p>
+    </header>
+    <main class="container">
+        <form class="card"  action="/add" method="post">
+            <div>
+                <label><span>이름 : </span><input type="text" name="name"> </label>
+                <label><span>나이 : </span><input type="number" name="age" min="0"> </label>
+                <label><span>성별 :</span>
+                    <select name="gender">
+                        <option value="">(선택)</option>
+                        <option value="남">남</option>
+                        <option value="여">여</option>
+                    </select> 
+                </label>
+                <label>
+                    <span>등급 : </span>
+                    <select name="grade">
+                        <option value="">(선택)</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                    </select>
+                </label>
+                <label><span>점수 : </span><input type="number" name="score" min="0" max="100"> </label>
+            </div>
+            <button class="btn" type="submit">추가</button>
+        </form>
+
+     <section class="card2">
+        <iframe src="/list" class="listf">
+
+        </iframe>
+     </section>        
+    </main>
+</body>
+</html>
