@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css" />
+    <title>방명록</title>
+</head>
+<body>
+    <header class="container hBox">
+        <h1>방명록</h1>
+        <p>작성자, 비밀번호, 제목 , 내용 입력해서 방명록을 남기세요</p>
+        <p>비밀번호 가 없으면 수정, 삭제 불가능 합니다</p>
+        <div id="msg-box"></div>
+        <script> 
+            const params = new URLSearchParams( location.search )
+            const msg = params.get('msg')
+            if(msg) {
+                document.getElementById('msg-box').innerHTML =
+                '<div class="notice" >' + decodeURIComponent(msg) + '</div?>'
+            }
+        </script>
+    </header>
+    <main class="container mainCon">
+        <section class="card write">
+            <h2>새 방명록 작성</h2>
+            <!-- <div class="emoji-box">
+                <span class="emoji">😁</span>
+                <span class="emoji">🤪</span>
+                <span class="emoji">👱‍♀️</span>
+            </div> -->
+            <form action="/add" method="post" class="form-grid">
+                <label class="auth">
+                    <span>작성자*</span>
+                    <input type="text" name="author" required />
+                </label>
+                <label class="pw">
+                    <span>비밀번호*</span>
+                    <input type="text" name="password" required />
+                </label>                
+                <label class="full">
+                    <span>제목*</span>
+                    <input type="text" name="title" required />
+                </label>                
+                <label class="full">
+                    <span>내용*</span>
+                    <textarea id="content-box"  type="text" name="content" rows="3" required ></textarea>
+                </label> 
+                <div class="full right">
+                    <button class="btn addbtn" type="submit">등록</button>
+                </div>               
+            </form>
+        </section>
+
+        <section class="card show">
+            <h2>방명록 목록</h2>
+            <iframe src="/list" class="list-iframe" title="메모 목록">
+
+            </iframe>
+        </section>
+    </main>
+    <script>
+        // const emojis = document.querySelectorAll(".emoji")
+        // const textarea = document.getElementById("content-box")
+
+        // emojis.forEach( item =>{
+        //     item.addEventListener("click", ()=>{
+        //         textarea.value += item.textContent
+        //         textarea.focus()
+        //     })
+        // })
+    </script>
+
+</body>
+</html>
