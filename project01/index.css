@@ -1,6 +1,11 @@
+*{box-sizing:border-box}html,body{min-height: 100vh; margin: 0; padding: 0;}
 body {
-    background-color: #ededed;
-    color: #1f1f1f;
+    /* background-color: #ededed;
+    color: #1f1f1f; */
+    background: radial-gradient(1200px 600px at 10% 10%, rgba(99,102,241,0.12), transparent 8%),
+                  radial-gradient(900px 400px at 90% 90%, rgba(34,197,94,0.06), transparent 8%),
+                  linear-gradient(180deg,#071023 0%, #071826 100%);
+    color:#e6eef8;
     user-select: none;
 }
 .container {
@@ -13,7 +18,6 @@ body {
     text-align: center;
     gap: 10px;
     padding: 10px 0px;
-
     /* border: 1px solid black; */
 }
 
@@ -41,9 +45,27 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #fafafac9;
+    /* background-color: #fafafac9; */
     padding: 1rem;
     border-radius: 1rem;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    box-shadow:0 6px 30px rgba(2,6,23,0.6);
+    border:1px solid rgba(255,255,255,0.03);
+}
+.cardEdit{
+    min-width: 380px;
+    max-width: 20%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #fafafac9; */
+    padding: 1rem;
+    border-radius: 1rem;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    box-shadow:0 6px 30px rgba(2,6,23,0.6);
+    border:1px solid rgba(255,255,255,0.03);
 }
 
 .write{
@@ -73,13 +95,7 @@ form {
 }
 
 
-.list-iframe {
-    width: 100%;
-    min-height: 370px;
-    border: none;
-    background-color: rgba(209, 162, 169, 0.301);
-    border-radius: 1rem;
-}
+
 
 .notice {
     background-color: rgb(224, 87, 33);
@@ -89,11 +105,24 @@ form {
     padding: 1rem;
 }
 .btn {
-    padding: 0.8rem 1.6rem;
+    padding: 0.4rem 0.8rem;
     border: none;
     border-radius: 4px;
     background-color: rgb(218, 100, 53);
     color: white;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: rgb(212, 76, 22);
+}
+.addbtn{
+    padding: 0.6rem 1.4rem !important; 
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(218, 100, 53);
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
 }
 .emoji-box {
     font-size: 1.6rem;
@@ -111,46 +140,149 @@ form {
     border-radius: 50%;
     text-align: center;
 }
-form {
+.inputBox {
     width: 100%;
     /* flex-direction: column; */
     gap: 2rem;
     margin: 1rem 0;
     flex-wrap: wrap;
 }
-form label {
+.inputBox label {
     width: 100%;
     display: flex;
     justify-content: start;
 
     /* border: 1px solid black; */
 }
-form label span {
+.inputBox label span {
     width: 80px;
     text-align: left;
     
     /* border: 1px solid black; */
 }
-form label input,
-form label textarea {
+.inputBox label input,
+.inputBox label textarea {
     width: 80%;
 }
-form label input {
+.inputBox label input {
     padding: 0.3rem 0;
 }
 .right {
     text-align: right;
 }
 
-form > label:nth-child(1),
-form > label:nth-child(2){
+.inputBox > label:nth-child(1),
+.inputBox > label:nth-child(2){
     width: 40%;
 }
 
-form .auth input,
-form .auth textarea ,
-form .pw input,
-form .pw textarea{
+.inputBox .auth input,
+.inputBox .auth textarea ,
+.inputBox .pw input,
+.inputBox .pw textarea{
     width: 50%;
 }
 
+
+.list-iframe {
+    width: 100%;
+    min-height: 560px;
+    border: none;
+    /* background-color: rgb(169, 169, 169); */
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    /* border-radius: 1rem; */
+}
+
+.guest-book{
+    /* background-color: rgba(169, 169, 169, 0.253); */
+    width: 95%;
+    border-radius: 0.3rem;
+    padding: 15px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    box-shadow:0 6px 30px rgba(2,6,23,0.6);
+    border:1px solid rgba(255,255,255,0.03);
+    margin-bottom: 20px;
+}
+
+.post-main{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.post-main > span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.author,
+.date{
+    margin: 0;
+}
+
+.date{
+    color: gray;
+    font-size: 0.8rem;
+}
+
+.message{
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: start;
+}
+
+.post-actions{
+    display: flex;
+    justify-content: start;
+    gap: 8px;
+}
+
+/* .password-input{
+    width: 70%;
+} */
+
+input[type=text],
+input[type=password],
+textarea{
+    border-radius:5px;
+    border:1px solid rgba(255,255,255,0.04);
+    background:transparent;
+    color:inherit;
+    font-size:0.8rem !important;
+    padding: 10px 0px 10px 5px !important;
+}
+
+.form-grid{
+    width: 100%;
+    flex-direction: column;
+    gap: 30px;
+
+    /* border: 1px solid white ; */
+}
+.form-grid > .full{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+
+    /* border: 1px solid white; */
+}
+.full > span{
+    width: 80px;
+}
+.full > input,
+.full > textarea{
+    width: 80%;
+}
+
+.editBtn{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.editBtn > .btn{
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+}

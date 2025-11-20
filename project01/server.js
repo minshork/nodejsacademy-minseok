@@ -49,21 +49,24 @@ app.get('/list', async (req, res)=>{
        const listHtml = rows.length === 0 ? 
             `<li>아직 등록된 메모가 없습니다</li>`
        : rows.map( (item) =>
-            `<li>
+            `<li class="guest-book">
                 <div class="post-main">
-                    <strong class="post-title">${item.title}</strong>
-                    <span class="author">${item.author}</span>
-                    <span class="date">${item.created_at}</span>
+                    <span>
+                        <div><strong class="author">${item.author}</strong></div>
+                        <div><p class="date">${item.created_at}</p></div>
+                    </span>
+                    <span>
+                        <strong class="post-title">${item.title}</strong>
+                    </span>
                 </div>
-                <p class="message">${item.content} </p>
+                <p class="message">${item.content}</p>
                 <div class="post-actions">
                     <form action="/edit" method="get" target="_top" >
                         <input type="hidden" name="id" value="${item.id}" />
                         <button class="btn edtbtn" type="submit">수정</button>
                     </form>
+                    <input type="password" name="password" placeholder="비밀번호" class="password-input" required/>
                     <form action="/delete" method="post" target="_top" >
-                        <input type="password" name="password" placeholder="비밀번호"
-                           class="password-input" required/>
                         <input type="hidden" name="id" value="${item.id}" />
                         <button class="btn delbtn" type="submit">삭제</button>
                     </form>
@@ -76,7 +79,7 @@ app.get('/list', async (req, res)=>{
                 <html>
                     <head>
                         <meta charset="utf-8" />
-                        <link rel="stylesheet" href="./style.css" />
+                        <link rel="stylesheet" href="/index.css" />
                     </head>
                     <body>
                         <ul class="post-list">
@@ -127,7 +130,7 @@ app.get("/edit", async (req, res) =>{
         )
 
         if( rows.length === 0 ){
-            return res.redirect('/?msg=' + encodeURIComponent('해당하는 메모를 찾을수 없스브니다 '))
+            return res.redirect('/?msg=' + encodeURIComponent('해당하는 메모를 찾을수 없습니다 '))
         }
         const note = rows[0]
         res.send(`
@@ -135,35 +138,38 @@ app.get("/edit", async (req, res) =>{
                 <html>
                     <head>
                         <meta charset="utf-8" />
-                        <link rel="stylesheet" href="./style.css" />
+                        <link rel="stylesheet" href="/index.css" />
                     </head>
                     <body>
                         <header class="container">
-                            <h1>메모 수정</h1>
+                            <h1>방명록 수정</h1>
                           ${msg ? `<div class="notice">${msg}</div>` : ''}  
                         </header>
                         <main>
-                            <section class="card">
-                                <p>작성자 : ${note.author} / 작성일 : ${note.created_at} </p>
-                                <form action="/edit" method="post" class="form-grid">
-                                    <input type="hidden" name="id" value="${note.id}" />
-                                    <label class="full">
-                                        <span>제목*</span>
-                                        <input name="title" value="${note.title}" required />
-                                    </label>
-                                    <label class="full">
-                                        <span>내용*</span>
-                                        <textarea name="content" rows=4 required >${note.content}</textarea>
-                                    </label>
-                                    <label class="full">
-                                        <span>비밀번호*</span>
-                                        <input type="password" name="password"  required />
-                                    </label>
-                                    <div class="full right">
-                                        <a href="/" class="btn canclebtn">취소</a>
-                                        <button type="submit">저장</button>
-                                    </div>                                    
-                                </form>
+                            <section class="cardEdit">
+                                <div>
+                                    <p>작성자 : ${note.author} / 작성일 : ${note.created_at} </p>
+                                    <form action="/edit" method="post" class="form-grid">
+                                        <input type="hidden" name="id" value="${note.id}" />
+                                        <label class="full">
+                                            <span>제목*</span>
+                                            <input type="text" name="title" value="${note.title}" required />
+                                        </label>
+                                        <label class="full">
+                                            <span>비밀번호*</span>
+                                            <input type="password" name="password"  required />
+                                        </label>
+                                        <label class="full">
+                                            <span>내용*</span>
+                                            <textarea name="content" rows=4 required >${note.content}</textarea>
+                                        </label>
+                                        <div class="full right editBtn">
+                                            <a href="/" class="btn canclebtn">취소</a>
+                                            <button class="btn" type="submit">저장</button>
+                                        </div>                                    
+                                    </form>
+                                </div>
+                                
                             </section>
                         </main>
                     </body>

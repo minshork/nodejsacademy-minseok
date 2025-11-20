@@ -29,22 +29,22 @@
                 <span class="emoji">🤪</span>
                 <span class="emoji">👱‍♀️</span>
             </div> -->
-            <form action="/add" method="post" class="form-grid">
+            <form class="inputBox" action="/add" method="post" class="form-grid">
                 <label class="auth">
                     <span>작성자*</span>
-                    <input type="text" name="author" required />
+                    <input type="text" name="author" placeholder="이름 입력" required />
                 </label>
                 <label class="pw">
                     <span>비밀번호*</span>
-                    <input type="text" name="password" required />
+                    <input type="text" name="password" placeholder="비밀번호" required />
                 </label>                
                 <label class="full">
                     <span>제목*</span>
-                    <input type="text" name="title" required />
+                    <input type="text" name="title" placeholder="제목 입력" required />
                 </label>                
                 <label class="full">
                     <span>내용*</span>
-                    <textarea id="content-box"  type="text" name="content" rows="3" required ></textarea>
+                    <textarea id="content-box"  type="text" name="content" rows="3" placeholder="내용 입력" required ></textarea>
                 </label> 
                 <div class="full right">
                     <button class="btn addbtn" type="submit">등록</button>
@@ -54,7 +54,7 @@
 
         <section class="card show">
             <h2>방명록 목록</h2>
-            <iframe src="/list" class="list-iframe" title="메모 목록">
+            <iframe src="/list" class="list-iframe" title="메모 목록" style="background:linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.5)) !important;">
 
             </iframe>
         </section>
